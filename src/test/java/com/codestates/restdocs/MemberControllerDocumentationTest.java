@@ -17,7 +17,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
-import org.springframework.restdocs.request.RequestDocumentation;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
@@ -53,8 +52,12 @@ public class MemberControllerDocumentationTest implements MemberControllerTestHe
         // given
         String page = "1";
         String size = "10";
+        String companyType = "005";
+        String companyLocation = "001";
 
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
+        queryParams.add("companyType", companyType);
+        queryParams.add("companyLocation", companyLocation);
         queryParams.add("page", page);
         queryParams.add("size", size);
 

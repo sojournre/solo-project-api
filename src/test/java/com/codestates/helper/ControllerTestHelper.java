@@ -7,13 +7,12 @@ import org.springframework.restdocs.request.ParameterDescriptor;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.util.MultiValueMap;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 
@@ -56,6 +55,8 @@ public interface ControllerTestHelper<T> {
 
     default List<ParameterDescriptor> getDefaultRequestParameterDescriptors() {
         return List.of(
+                parameterWithName("companyLocation").description("지역"),
+                parameterWithName("companyType").description("업종"),
                 parameterWithName("page").description("Page 번호"),
                 parameterWithName("size").description("Page Size")
         );
